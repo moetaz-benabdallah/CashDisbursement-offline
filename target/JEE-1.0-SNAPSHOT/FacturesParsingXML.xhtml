@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./layout.xhtml">
+
+            <ui:define name="content">
+
+                <br></br><br></br>
+                
+                
+                <h:form enctype="multipart/form-data">
+                    <p:growl id="messages" showDetail="true" />
+
+                    Veuillez choisir un fichier (XML) contient des Factures 
+                    
+                    <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true"/>
+
+                    <p:commandButton value="Affiche" ajax="false" actionListener="#{fileUploadView.upload}"/>
+                </h:form>
+                
+                <br></br><br></br>
+                
+                
+                
+                
+                
+                
+                <h:form>
+
+
+                    <p:panel>
+
+                        <div id="guichet" style="border: 1px solid; width: 90px; height: 27px;
+                             border-color: #3e93a7; background-color: #3e93a7;
+                             margin-left: -16px;
+                             margin-top: -11px;
+                             -webkit-border-top-left-radius: 4px;
+                             -webkit-border-bottom-right-radius: 18px;
+                             -moz-border-radius-topleft: 4px;
+                             -moz-border-radius-bottomright: 18px;
+                             border-top-left-radius: 4px;
+                             border-bottom-right-radius: 18px;">
+                            <h4 style="margin-top: -10px; color: white;"><br></br>Guichet </h4>
+                        </div>
+
+                        <f:facet name="header">
+
+
+                        </f:facet>
+
+
+
+                        <f:facet name="footer">
+                            Listes Des Factures Liées
+
+                            <p:dataTable value="#{fileUploadView.listFactures}" var="facture" rendered="#{not empty   fileUploadView.listFactures}">
+
+                                <p:column sortBy="#{facture.id}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Id"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.id}"/>  
+                                </p:column> 
+
+                                <p:column sortBy="#{facture.ref_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Référence"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.ref_fact}"/>  
+                                </p:column> 
+                                
+                                <p:column sortBy="#{facture.id_organisation}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Id organisation"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.id_organisation}"/>  
+                                </p:column> 
+
+                                <p:column sortBy="#{facture.client_fact.id}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Nom du client"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.client_fact.id}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.adresse_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Adresse"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.adresse_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.date_offic_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Date d'officialisation"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.date_offic_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.date_exig_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Date d'exig"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.date_exig_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.date_edit_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Date d'edit"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.date_edit_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.montant_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Montant"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.montant_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.compte_c_fact.id}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Compte"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.compte_c_fact.id}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.dette_exoneree_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Dette"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.dette_exoneree_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.montant_enc_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Montant d'encaiss"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.montant_enc_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.contrat_fact.id}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Contrat"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.contrat_fact.id}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.voc_fact.id}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Vocabulaire"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.voc_fact.id}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.dette_remboursable_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Dette Remboursable"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.dette_remboursable_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.nom_train_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Nom Train Fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.nom_train_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{facture.etape_actu_relance_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="Etape Actu"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{facture.etape_actu_relance_fact}" />  
+                                </p:column>
+
+
+                            </p:dataTable>
+                            <br></br><br></br>
+                            <h:outputText value="No data found!"
+                                          rendered="#{not empty fileUploadView.upload() and empty fileUploadView.listFactures}" />
+
+                        </f:facet>
+
+
+
+
+
+
+
+                    </p:panel>
+
+                </h:form>
+                
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

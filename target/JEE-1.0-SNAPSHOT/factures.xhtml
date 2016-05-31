@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./menu/style.css"/>
+
+        <title>Caisse hors-ligne</title>
+    </h:head>
+    <body>
+        <div>
+
+            <ul id="menu-bar">
+
+                <li><img src="resources/menu/logo_sonede.png" width="200%" style="margin-left: -280px; margin-top: -6px;"></img></li>
+
+
+
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Products</a>
+                    <ul>
+                        <li><a href="#">Products Sub Menu 1</a></li>
+                        <li><a href="#">Products Sub Menu 2</a></li>
+                        <li><a href="#">Products Sub Menu 3</a></li>
+                        <li><a href="#">Products Sub Menu 4</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Services</a>
+                    <ul>
+                        <li><a href="#">Services Sub Menu 1</a></li>
+                        <li><a href="#">Services Sub Menu 2</a></li>
+                        <li><a href="#">Services Sub Menu 3</a></li>
+                        <li><a href="#">Services Sub Menu 4</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+
+
+                <!--<form method="get" action="Facture_b">
+
+
+                    <li><input type="text" name="search" id="search"></input></li>
+
+                    <input type="submit" name="send_button" value="valider" src="resources/images/icone_recherche.png" style="margin-left: 570px; margin-top: 5px; ; position: absolute;"/>
+                </form>-->
+                
+                
+                <h:form>
+                    <h:inputText id="search" value="#{facture_b.search}" 
+                                 style="margin-left: 400px; border-radius: 20px; height: 20px;"/>
+                   
+                    <h:commandButton action="#{facture_b.searchresult}" styleClass="buttonClass">
+                        </h:commandButton>
+
+                    </h:form>
+                
+                
+                <li> <img src="resources/menu/arabsoft3.png" style="margin-top: -30px; margin-left: 965px;"></img></li>
+                
+
+
+
+            </ul>
+
+
+            <p:panel style="margin-top: -15px;">
+
+                <div class="divign">
+
+                    <h:graphicImage url="/resources/images/imVign.png" width="10%" id="im" style="
+                                    margin-top: 24px; margin-left: 17px;"/>
+
+                    <div class="divdivign"></div>
+
+                </div>
+
+
+
+            </p:panel>
+
+        </div>
+
+
+
+
+        <h:form>
+
+
+            <p:panel>
+
+                <div id="guichet" style="border: 1px solid; width: 90px; height: 27px;
+                     border-color: #3e93a7; background-color: #3e93a7;
+                     margin-left: -16px;
+                     margin-top: -11px;
+                     -webkit-border-top-left-radius: 4px;
+                     -webkit-border-bottom-right-radius: 18px;
+                     -moz-border-radius-topleft: 4px;
+                     -moz-border-radius-bottomright: 18px;
+                     border-top-left-radius: 4px;
+                     border-bottom-right-radius: 18px;">
+                    <h4 style="margin-top: -10px; color: white;"><br></br>Guichet </h4>
+                </div>
+
+                <f:facet name="header">
+
+
+                </f:facet>
+
+
+
+                <f:facet name="footer">
+                    Listes Des Factures Liées
+
+                    <p:dataTable value="#{facture_b.listFactures}" var="facture" rendered="#{not empty   facture_b.listFactures}">
+
+                        <p:column sortBy="#{facture.id}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Id"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.id}"/>  
+                        </p:column> 
+
+                        <p:column sortBy="#{facture.id_organisation}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Id organisation"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.id_organisation}"/>  
+                        </p:column> 
+
+                        <p:column sortBy="#{facture.ref_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Référence"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.ref_fact}"/>  
+                        </p:column> 
+
+                        <p:column sortBy="#{facture.client_fact.nom}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Nom du client"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.client_fact.nom}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.adresse_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Adresse"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.adresse_fact}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.date_offic_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Date d'officialisation"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.date_offic_fact}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.date_exig_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Date d'exig"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.date_exig_fact}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.date_edit_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Date d'edit"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.date_edit_fact}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.montant_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Montant"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.montant_fact}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.compte_c_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Compte"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.compte_c_fact.id}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.dette_exoneree_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Dette"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.dette_exoneree_fact}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.montant_enc_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Montant d'encaiss"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.montant_enc_fact}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.contrat_fact.ref_contrat}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Contrat"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.contrat_fact.ref_contrat}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.voc_fact.code_voc}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Vocabulaire"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.voc_fact.code_voc}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.dette_remboursable_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Dette Remboursable"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.dette_remboursable_fact}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.nom_train_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Nom Train Fact"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.nom_train_fact}" />  
+                        </p:column>
+
+                        <p:column sortBy="#{facture.etape_actu_relance_fact}">  
+                            <f:facet name="header">  
+                                <h:outputText value="Etape Actu"/>  
+                            </f:facet>  
+                            <h:outputText value="#{facture.etape_actu_relance_fact}" />  
+                        </p:column>
+
+
+                    </p:dataTable>
+
+                    <br></br><br></br>
+                    
+                    <h:outputText value="No matches found!"
+                                  rendered="#{not empty facture_b.search and empty facture_b.listFactures}" />
+
+                </f:facet>
+
+
+
+
+
+
+
+            </p:panel>
+
+        </h:form>
+
+
+
+
+
+
+    </body>
+
+    <style>
+        .divign{
+            border: 1px solid; 
+            border-color: #3e93a7; 
+            border-radius: 10px;
+            width: 250px; 
+            height: 105px; 
+            box-shadow: -1px 13px 36px -19px rgba(0,0,0,0.75); 
+            margin-top: 5px;
+        }
+        .divdivign{
+            background-color:#3e93a7; 
+            width: 250px; 
+            height: 20%; 
+            float:left; 
+            border:none; 
+            margin-top: 26px;                 
+            -webkit-border-bottom-right-radius: 10px;
+            -webkit-border-bottom-left-radius: 10px;
+            -moz-border-radius-bottomright: 10px;
+            -moz-border-radius-bottomleft: 10px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        
+        .buttonClass {
+
+     background:url('resources/images/icone_recherche.png') no-repeat;
+
+       }
+    </style>
+
+</html>

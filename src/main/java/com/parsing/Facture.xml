@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Factures>
+    <Facture>
+        <id>9</id>
+        <ref_fact>ref9</ref_fact>
+        <id_organisation>36</id_organisation>
+        <client_fact>5</client_fact>
+        <adresse_fact>adresse1</adresse_fact>
+        <date_offic_fact>1913-01-03 11:11:11.000</date_offic_fact>
+        <date_exig_fact>1913-01-03 11:11:11.000</date_exig_fact>
+        <date_edit_fact>1913-01-03 11:11:11.000</date_edit_fact>
+        <montant_fact>1.5</montant_fact>
+        <compte_c_fact>8</compte_c_fact>
+        <dette_exoneree_fact>6</dette_exoneree_fact>
+        <montant_enc_fact>9.3</montant_enc_fact>
+        <contrat_fact>2</contrat_fact>
+        <voc_fact>1</voc_fact>
+        <dette_remboursable_fact>4</dette_remboursable_fact>
+        <nom_train_fact>nom1</nom_train_fact>
+        <etape_actu_relance_fact>etap1</etape_actu_relance_fact>
+    </Facture>
+    <Facture>
+        <id>9</id>
+        <ref_fact>ref2</ref_fact>
+        <id_organisation>36</id_organisation>
+        <client_fact>5</client_fact>
+        <adresse_fact>adresse1</adresse_fact>
+        <date_offic_fact>1913-01-03 11:11:11.000</date_offic_fact>
+        <date_exig_fact>1913-01-03 11:11:11.000</date_exig_fact>
+        <date_edit_fact>1913-01-03 11:11:11.000</date_edit_fact>
+        <montant_fact>1.5</montant_fact>
+        <compte_c_fact>8</compte_c_fact>
+        <dette_exoneree_fact>6</dette_exoneree_fact>
+        <montant_enc_fact>9.3</montant_enc_fact>
+        <contrat_fact>2</contrat_fact>
+        <voc_fact>1</voc_fact>
+        <dette_remboursable_fact>4</dette_remboursable_fact>
+        <nom_train_fact>nom1</nom_train_fact>
+        <etape_actu_relance_fact>etap1</etape_actu_relance_fact>
+    </Facture>
+</Factures>

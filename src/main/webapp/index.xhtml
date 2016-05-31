@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Interface de connexion</title>
+    </h:head>
+    <h:body> 
+
+
+        <p:megaMenu orientation="#{megaMenuView.orientation}" style="margin-top:-8px; height: 30px; box-shadow: 1px 1px 12px;
+                    margin-left: -8px; width: 1506px;">
+
+        </p:megaMenu>
+
+
+
+        <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
+
+
+
+
+        <h:form id="form">
+            <p:panel id="panel" header="Nouveau Client" style="margin-bottom:10px;">
+                <p:messages id="messages" />
+                <h:panelGrid columns="3" cellpadding="5">
+                    
+                    <p:outputLabel for="ref" value="Reference:" />
+                    <p:inputText id="ref" value="#{Client.ref}" /> 
+                    <p:message for="ref" />
+                    
+                    <p:outputLabel for="nomClient" value="Nom client:" />
+                    <p:inputText id="nomClient" value="#{Client.nomClient}" /> 
+                    <p:message for="nomClient" />
+                    
+                    <p:outputLabel for="adresse" value="Adresse:" />
+                    <p:inputText id="adresse" value="#{Client.adresse}" /> 
+                    <p:message for="adresse" />
+                    
+                    
+                    
+              
+                    
+                </h:panelGrid>
+            </p:panel>
+
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:commandButton value="Submit" update="panel" actionListener="#{resetInputView.save}" style="margin-left: 125px;margin-right: 47px;" />
+                </f:facet>
+
+                <f:facet name="left">
+                    <p:commandButton value="Reset" update="panel" process="@this" actionListener="#{resetInputView.resetFail}" style="margin-right:290px;" />
+
+                    
+                </f:facet>
+            </p:toolbar>
+        </h:form>
+
+
+
+
+
+
+
+
+
+
+
+    </h:body>
+</html>
+

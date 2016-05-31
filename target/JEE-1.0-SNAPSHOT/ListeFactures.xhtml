@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <body>
+
+        <ui:composition template="./layout.xhtml"> 
+
+            <ui:define name="top">
+
+                <input type="text"></input>
+
+
+
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h:form>
+
+
+                    <p:panel>
+
+                        <div id="guichet" style="border: 1px solid; width: 90px; height: 27px;
+                             border-color: #3e93a7; background-color: #3e93a7;
+                             margin-left: -16px;
+                             margin-top: -11px;
+                             -webkit-border-top-left-radius: 4px;
+                             -webkit-border-bottom-right-radius: 18px;
+                             -moz-border-radius-topleft: 4px;
+                             -moz-border-radius-bottomright: 18px;
+                             border-top-left-radius: 4px;
+                             border-bottom-right-radius: 18px;">
+                            <h4 style="margin-top: -10px; color: white;"><br></br>&nbsp;Guichet </h4>
+                        </div>
+
+                        <f:facet name="header">
+
+
+                        </f:facet>
+
+
+
+                        <f:facet name="footer">
+                            Listes Des Factures Liées
+                            
+                            <h:commandLink>
+                                <img src="resources/images/xml.png"></img>
+                                <p:dataExporter type="xml" target="Factures" fileName="Facture" pageOnly="true" />
+                            </h:commandLink>
+                            <h:commandLink>
+                                <img src="resources/images/excel.png"></img>
+                                <p:dataExporter type="xls" target="Factures" fileName="Facture" pageOnly="true" />
+                            </h:commandLink>
+                            
+
+                            <p:dataTable id="Factures" value="#{facture_b.listFactures}" var="Facture" rendered="#{not empty   facture_b.listFactures}">
+
+
+                                <p:column sortBy="#{Facture.id}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="id"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.id}"/>  
+                                </p:column> 
+
+                                <p:column sortBy="#{Facture.ref_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="ref_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.ref_fact}"/>  
+                                </p:column>
+                                
+                                <p:column sortBy="#{Facture.id_organisation}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="id_organisation"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.id_organisation}"/>  
+                                </p:column> 
+
+                                <p:column sortBy="#{Facture.client_fact.id}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="client_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.client_fact.id}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.adresse_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="adresse_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.adresse_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.date_offic_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="date_offic_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.date_offic_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.date_exig_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="date_exig_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.date_exig_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.date_edit_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="date_edit_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.date_edit_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.montant_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="montant_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.montant_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.compte_c_fact.id}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="compte_c_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.compte_c_fact.id}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.dette_exoneree_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="dette_exoneree_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.dette_exoneree_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.montant_enc_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="montant_enc_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.montant_enc_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.contrat_fact.id}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="contrat_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.contrat_fact.id}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.voc_fact.id}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="voc_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.voc_fact.id}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.dette_remboursable_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="dette_remboursable_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.dette_remboursable_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.nom_train_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="nom_train_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.nom_train_fact}" />  
+                                </p:column>
+
+                                <p:column sortBy="#{Facture.etape_actu_relance_fact}">  
+                                    <f:facet name="header">  
+                                        <h:outputText value="etape_actu_relance_fact"/>  
+                                    </f:facet>  
+                                    <h:outputText value="#{Facture.etape_actu_relance_fact}" />  
+                                </p:column>
+
+
+                            </p:dataTable>
+                            <br></br><br></br>
+                            <h:outputText value="No data found!"
+                                          rendered="#{not empty facture_b.search and empty facture_b.listFactures}" />
+
+
+                            
+
+                        </f:facet>
+
+
+
+
+
+
+
+                    </p:panel>
+
+                </h:form>
+
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+
+
+</html>

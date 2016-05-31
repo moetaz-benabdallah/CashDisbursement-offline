@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+    <property name="hibernate.connection.username">admin</property>
+    <property name="hibernate.connection.password">admin</property>
+    <mapping class="com.model.Client"/>
+    <mapping class="com.model.Compte_Client"/>
+    <mapping class="com.model.Banque"/>
+    <mapping class="com.model.Caissier"/>
+    <mapping class="com.model.Caisse"/>
+    <mapping class="com.model.Session_Caisse"/>
+    <mapping class="com.model.Mode_Reglement"/>
+    <mapping class="com.model.Vocabulaire"/>
+    <mapping class="com.model.Mouvement_Session_Caisse"/>
+    <mapping class="com.model.Contrat"/>
+    <mapping class="com.model.Facture"/>
+    <mapping class="com.model.Encaissement"/>
+    <mapping class="com.model.Encaissement_sur_Facture"/>
+  </session-factory>
+</hibernate-configuration>
